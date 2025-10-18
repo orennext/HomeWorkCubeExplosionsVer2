@@ -356,9 +356,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a5a6a1524783754a827ec0d3ff2bfd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _sizeFactor: 0
   _chanceSeparation: 100
   _multiplierScale: 0.5
   _multiplierChance: 0.5
+  _finder: {fileID: 1235914209}
 --- !u!54 &730135329
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -465,12 +467,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 730135326}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.52, y: 0.82227063, z: -1.7}
+  m_LocalPosition: {x: -0.52, y: 0.82227063, z: -3.47}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &884873088
 GameObject:
@@ -507,7 +509,7 @@ Transform:
   - {fileID: 1126402484}
   - {fileID: 1902677725}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &966852183
 GameObject:
@@ -857,13 +859,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1235914200}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 6.173115, y: -4.1110907, z: 3.024762}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1235914203
 MonoBehaviour:
@@ -905,8 +907,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d31e89cdcea3ea94dbc87c17dc6d39f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _explosionForce: 10
-  _explosionRadius: 3
   forceFalloff:
     serializedVersion: 2
     m_Curve:
@@ -931,6 +931,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  _baseExplosionForce: 10
+  _sizeToForceMultiplier: 3
 --- !u!114 &1235914206
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -986,7 +988,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf1b6a33b44084746b20739c2e2c2e1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _explosionRadius: 3
+  _baseSearchRadius: 3
+  _sizeToRadiusMultiplier: 1.5
 --- !u!1 &1365030438
 GameObject:
   m_ObjectHideFlags: 0
@@ -1020,9 +1023,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a5a6a1524783754a827ec0d3ff2bfd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _chanceSeparation: 100
+  _sizeFactor: 0
+  _chanceSeparation: 50
   _multiplierScale: 0.5
   _multiplierChance: 0.5
+  _finder: {fileID: 1235914209}
 --- !u!54 &1365030440
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1129,12 +1134,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1365030438}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.12167454, y: 0.82227063, z: -4.19}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 1.39, y: 0.82227063, z: -3.95}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1424812343
 GameObject:
@@ -1169,9 +1174,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a5a6a1524783754a827ec0d3ff2bfd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _sizeFactor: 0
   _chanceSeparation: 100
   _multiplierScale: 0.5
   _multiplierChance: 0.5
+  _finder: {fileID: 1235914209}
 --- !u!54 &1424812346
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1283,7 +1290,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1806321753
 GameObject:
@@ -1390,7 +1397,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &1806321762
 Rigidbody:
@@ -1431,9 +1438,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a5a6a1524783754a827ec0d3ff2bfd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _sizeFactor: 0
   _chanceSeparation: 100
   _multiplierScale: 0.5
   _multiplierChance: 0.5
+  _finder: {fileID: 1235914209}
 --- !u!1 &1820724656
 GameObject:
   m_ObjectHideFlags: 0

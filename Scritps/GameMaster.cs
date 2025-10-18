@@ -38,12 +38,14 @@ public class GameMaster : MonoBehaviour
         if (IsWorkSplitCube(chanceSeparation) == false)
         {
             Vector3 explosionPosition = new Vector3(cubeParent.gameObject.transform.position.x, cubeParent.gameObject.transform.position.y, cubeParent.gameObject.transform.position.z);
-            
+            float sizeFactor = cubeParent.SizeFactor;
+            float searchRadius = _finder.CalculateActualExplosionRadius(sizeFactor);
+
             _spawner.DestroyGameObject(cubeParent);
 
-            List<Rigidbody> rigidbodyFindCubes = _finder.FindAffectedCubes(explosionPosition);
+            List<Rigidbody> rigidbodyFindCubes = _finder.FindAffectedCubes(explosionPosition, searchRadius);
 
-            _exploder.AddExplosionForce(rigidbodyFindCubes, explosionPosition);
+            _exploder.AddExplosionForce(rigidbodyFindCubes, explosionPosition, sizeFactor, searchRadius);
 
             return;
         }

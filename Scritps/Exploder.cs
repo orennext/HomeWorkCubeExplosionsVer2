@@ -3,11 +3,11 @@ using UnityEngine;
 
 public class Exploder : MonoBehaviour
 {
-    [SerializeField] private float _explosionForce = 10.0f;
-    [SerializeField] private float _explosionRadius = 3.0f;
     [SerializeField] private AnimationCurve forceFalloff = AnimationCurve.EaseInOut(0f, 1f, 1f, 0f);
+    [SerializeField] private float _baseExplosionForce = 10f;
+    [SerializeField] private float _sizeToForceMultiplier = 3f;
 
-    public void AddExplosionForce(List<Rigidbody> affectedRigidbodies, Vector3 explosionPosition)
+    public void AddExplosionForce(List<Rigidbody> affectedRigidbodies, Vector3 explosionPosition, float sizeFactor, float explosionRadius)
     {
         foreach (Rigidbody rigidbody in affectedRigidbodies)
         {
@@ -18,12 +18,17 @@ public class Exploder : MonoBehaviour
             {
                 direction.Normalize();
 
-                float distanceFactor = Mathf.Clamp01(distance / _explosionRadius);
+                float distanceFactor = Mathf.Clamp01(distance / explosionRadius);
                 float forceMultiplier = forceFalloff.Evaluate(distanceFactor);
-                float finalForce = (_explosionForce * forceMultiplier);
+                float finalForce = CalculateActualExplosionForce(sizeFactor) * forceMultiplier;
 
                 rigidbody.AddForce(direction * finalForce, ForceMode.Impulse);
             }
         }
+    }
+
+    private float CalculateActualExplosionForce(float sizeFactor)
+    {
+        return _baseExplosionForce * sizeFactor * _sizeToForceMultiplier;
     }
 }

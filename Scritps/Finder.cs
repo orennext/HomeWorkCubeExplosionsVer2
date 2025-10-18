@@ -3,13 +3,13 @@ using UnityEngine;
 
 public class Finder : MonoBehaviour
 {
-    [SerializeField] private float _explosionRadius = 3.0f;
+    [SerializeField] private float _baseSearchRadius = 3f;
+    [SerializeField] private float _sizeToRadiusMultiplier = 1.5f;
 
-    public List<Rigidbody> FindAffectedCubes(Vector3 position)
+    public List<Rigidbody> FindAffectedCubes(Vector3 position, float searchRadius)
     {
         List<Rigidbody> affectedRigidbodies = new List<Rigidbody>();
-
-        Collider[] hitColliders = Physics.OverlapSphere(position, _explosionRadius);
+        Collider[] hitColliders = Physics.OverlapSphere(position, searchRadius);
 
         foreach (Collider hitCollider in hitColliders)
         {
@@ -22,5 +22,10 @@ public class Finder : MonoBehaviour
         }
 
         return affectedRigidbodies;
+    }
+
+    public float CalculateActualExplosionRadius(float sizeFactor)
+    {
+        return _baseSearchRadius * sizeFactor * _sizeToRadiusMultiplier;
     }
 }
